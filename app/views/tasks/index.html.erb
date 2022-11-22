@@ -1,7 +1,17 @@
 <h1>My tasks</h1>
 
 <% @tasks.each do |task| %>
-<p> <span><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></span> <%= link_to task.title, task_path(task) %> </p>
+<% if task.completed == true %>
+  <p>
+    <i class="fa-regular fa-square-check"></i>
+    <%= link_to task.title, task_path(task) %>
+  </p>
+  <% else %>
+    <p>
+    <i class="fa-regular fa-square"></i>
+    <%= link_to task.title, task_path(task) %>
+  </p>
+  <% end %>
 <% end %>
 <br>
 <%= link_to "Add new Task", new_task_path %>
